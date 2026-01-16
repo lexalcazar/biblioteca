@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Include las urls de la aplicacion prestamos
     path('prestamos/', include('prestamos.urls')),
+    
 ]

@@ -9,12 +9,8 @@
 <body>
     <header>
         <h1>Biblioteca</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Inicio</a></li>
-                {% block nav %}{% endblock %}
-            </ul>
-        </nav>
+       {% block header %}
+       {% endblock %}
     </header>
     <main>
         {% block content %}{% endblock %}
