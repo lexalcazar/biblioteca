@@ -1,0 +1,7 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+  <h2>Libro Creado</h2>
+  <p>El libro "{{ libro.titulo }}" ha sido creado exitosamente.</p>
+  <a href="{% url 'lista_libros' %}" class="btn btn-primary">Volver a la lista de libros</a>
+  <a href="{% url 'index' %}" class="btn btn-secondary">Volver al inicio</a>
+{% endblock %}

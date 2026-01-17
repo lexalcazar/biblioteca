@@ -1,0 +1,6 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+    <h2>Autor Creado</h2>
+    <p>Se ha creado el autor: {{ autor.nombre }} {{ autor.apellidos }}</p>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Volver a la página de inicio</a>
+{% endblock %}
