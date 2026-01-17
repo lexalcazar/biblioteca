@@ -63,3 +63,27 @@ class AutorForm(forms.ModelForm):
             'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
             'biografia': forms.Textarea(attrs={'class': 'form-control'}),
         }
+# Formulario para crear prestamos
+class PrestamoForm(forms.ModelForm):
+    bibliotecario= forms.CharField(max_length=9, required=True, help_text='Ingrese su DNI de bibliotecario para verificar permisos.')
+    class Meta:
+        model = Prestamo
+        fields = ['usuario', 'libro']
+        widgets = {
+            'usuario': forms.Select(attrs={'class': 'form-control'}),
+            'libro': forms.Select(attrs={'class': 'form-control'}),
+        }
+    # Comprobar que lo inserta un bibliotecario
+    def clean_bibliotecario(self):
+        dni = self.cleaned_data.get('bibliotecario')
+        try:
+            usuario = Usuario.objects.get(dni=dni)
+            if usuario.rol != 'bibliotecario':
+                raise forms.ValidationError('El usuario no es un bibliotecario.')
+        except Usuario.DoesNotExist:
+            raise forms.ValidationError('No existe un usuario con ese DNI.')
+        return dni
+     # actualizar en la tabla libro la cantidad de libros disponibles
+    
+
+    

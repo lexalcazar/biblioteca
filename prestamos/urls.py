@@ -14,6 +14,9 @@ urlpatterns = [
     path('libro_creado/', views.libro_creado, name='libro_creado'),
     path('crear_autor/', views.crear_autor, name='crear_autor'),
     path('autor_creado/', views.autor_creado, name='autor_creado'),
-   
+    path('autores/', views.lista_autores, name='lista_autores'),
+    path('autores/<str:autor_nombre>/', views.detalle_autor, name='detalle_autor'),
+    path('crear_prestamo/', views.crear_prestamo, name='crear_prestamo'),
+    path('prestamo_creado/', views.prestamo_creado, name='prestamo_creado'),
 
 ]

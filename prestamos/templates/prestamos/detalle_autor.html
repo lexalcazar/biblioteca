@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+  <h1>Detalle del Autor: {{ autor.nombre }}</h1>
+    <p><strong>Biografía:</strong> {{ autor.biografia }}</p>
+  <h2>Libros del Autor:</h2>
+  <ul>
+    {% for libro in libros %}
+      <li><a href="{% url 'detalle_libro' libro.titulo %}">{{ libro.titulo }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'index' %}" class="btn btn-primary">Volver a la página de inicio</a>
+{% endblock %}

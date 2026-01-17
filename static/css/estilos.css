@@ -1,0 +1,82 @@
+header {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+nav{
+
+}
+footer {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    /*position: fixed;*/
+    width: 100%;
+    bottom: 0;
+}
+body {
+    font-family: serif, sans-serif;
+    margin: 0;
+    padding-bottom: 40px; /* To ensure content is not hidden behind the footer */
+}
+main {
+    
+    padding: 20px;
+    padding-bottom: 80px;
+}
+/*div {
+    margin-bottom: 15px;
+}*/
+form{
+    border: solid black 1px;
+    padding: 1rem;
+    box-shadow: 2px 2px grey;
+    }
+
+.principal{
+    margin: 50px; 
+    display: grid;
+    grid-template-columns: repeat(4,300px); /* 3 columnas iguales */
+    grid-template-rows: repeat(1, 400px); /* 4 filas de 100px de altura */
+    gap: 40px; /* separaciones entre celdas */
+
+   
+}
+
+.contenedor{
+
+    width: fit-content;
+    height: auto;
+    margin: 0px;
+    padding: 1rem;
+    border: solid  black 1px; 
+    box-shadow: 4px 4px grey;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    /*border: 1px solid black;
+    margin: 20px 15px;
+    display: grid;
+    box-shadow: 1px 1px grey;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 5px;
+    width: auto;
+    height: auto;
+    overflow: hidden;*/
+}
+.tarjeta{
+
+    
+    border-bottom: solid  black 1px; 
+}
+
+.sub_tarjeta{
+
+    height: fit-content;
+    width: auto;
+    overflow: hidden;
+    
+}

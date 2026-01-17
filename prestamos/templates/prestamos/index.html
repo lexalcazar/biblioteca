@@ -1,5 +1,7 @@
 <!-- pagina de inicio que extiende a base_generic.html -->
+
 {% extends 'base_generic.html' %}
+{% load static %}
 {% block header %}
     <nav>
         <ul>
@@ -9,11 +11,147 @@
             <li><a href="{% url 'lista_usuarios' %}">Lista de Usuarios</a></li>
             <li><a href="{% url 'anadir_libro' %}">Añadir Libro</a></li>
             <li><a href="{% url 'crear_autor' %}">Crear Autor</a></li>
+            <li><a href="{% url 'lista_autores' %}">Lista de Autores</a></li>
+            <li><a href="{% url 'crear_prestamo' %}">Crear Préstamo</a></li>
             
         </ul>
     </nav>
 {% endblock %}
 {% block content %}
     <h2>Bienvenido a la sección de Préstamos de la Biblioteca</h2>
+    <div class="principal">
+        <!--Contenedor de lista de libros-->
+        <div class="contenedor">
+            
+            <div class="tarjeta">
+                <a href="{% url 'lista_libros' %}">
+                    <img src="{% static 'images/libros.jpeg' %}" alt="Logo">
+                </a>
+            </div>
+            <div class="sub_tarjeta"> 
+                <a href="{% url 'lista_libros' %}">
+                    <h1>Lista de Libros</h1>
+                    <p>Ver listado de los libros de la biblioteca </p>
+                </a>
+            </div>
+        <!--Fin div lista de libros-->
+
+        <!--Contenedor de crear usuario-->            
+        </div>   
+        <div class="contenedor">
+            
+            <div class="tarjeta">
+                <a href="{% url 'crear_usuario' %}">
+                    <img src="{% static 'images/usuario.jpeg' %}" alt="Logo">
+                </a>
+            </div>
+            <div class="sub_tarjeta"> 
+                <a href="{% url 'crear_usuario' %}">
+                    <h1>Crear usuario</h1>
+                    <p>Crear un usuario de la biblioteca</p>
+                </a>
+            </div>
+                    
+        </div>  
+        <!-- Fin div crear usuario-->
+
+        <!--Contenedor de listar usuarios-->            
+          
+           <div class="contenedor">
+            
+            <div class="tarjeta">
+                <a href="{% url 'lista_usuarios' %}">
+                    <img src="{% static 'images/usuarios.png' %}" alt="Logo">
+                </a>
+            </div>
+            <div class="sub_tarjeta"> 
+                <a href="{% url 'lista_usuarios' %}">
+                    <h1>Lista Usuarios</h1>
+                    <p>Ver los usuarios dfe la biblioteca</p>
+                </a>
+            </div>
+                    
+        </div>  
+        <!-- Fin div listar usuarios-->
+
+
+
+        <!--Contenedor de añadir libro -->            
+         
+           <div class="contenedor">
+            
+            <div class="tarjeta">
+                <a href="{% url 'anadir_libro' %}">
+                    <img src="{% static 'images/catalogo.jpeg' %}" alt="Logo">
+                </a>
+            </div>
+            <div class="sub_tarjeta"> 
+                <a href="{% url 'anadir_libro' %}">
+                    <h1>Añadir libro</h1>
+                    <p>Añadir un libro al catalogo de la biblioteca</p>
+                </a>
+            </div>
+                    
+        </div>  
+        <!-- Fin div añadir libro-->
+
+
+       <!--Contenedor de crear autor-->            
+         
+           <div class="contenedor">
+            
+            <div class="tarjeta">
+                <a href="{% url 'crear_autor' %}">
+                    <img src="{% static 'images/autor.jpeg' %}" alt="Logo">
+                </a>
+            </div>
+            <div class="sub_tarjeta"> 
+                <a href="{% url 'crear_autor' %}">
+                    <h1>Añadir autor a la biblioteca</h1>
+                    <p>Añadir un autor al catalogo de la biblioteca</p>
+                </a>
+            </div>
+                    
+        </div>  
+        <!-- Fin div crear autor-->
+
+        <!--Contenedor de lista autores -->            
+         
+        <div class="contenedor">
+            
+        <div class="tarjeta">
+            <a href="{% url 'lista_autores' %}">
+                <img src="{% static 'images/autores.png' %}" alt="Logo">
+            </a>
+        </div>
+        <div class="sub_tarjeta"> 
+            <a href="{% url 'lista_autores' %}">                    
+                <h1>Ver lista de autores</h1>
+                <p>Ver los autores que disponemos en la biblioteca </p>
+            </a>
+        </div>
+                    
+    </div>  
+        <!-- Fin div lista autores -->
+
+    <!--Contenedor de crear prestamo -->            
+         
+        <div class="contenedor">
+            
+        <div class="tarjeta">
+            <a href="{% url 'crear_prestamo' %}">
+                <img src="{% static 'images/prestamo.jpeg' %}" alt="Logo">
+            </a>
+        </div>
+        <div class="sub_tarjeta"> 
+            <a href="{% url 'crear_prestamo' %}">                    
+                <h1>Prestamo de libros</h1>
+                <p>Realizar un prestamo</p>
+            </a>
+        </div>
+                    
+    </div>  
+        <!-- Fin div crear prestamo -->
+    </div>    
   
 {% endblock %}  

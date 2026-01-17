@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Crear Préstamo{% endblock %}
+
+{% block content %}
+    <h2>Crear Préstamo</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Préstamo</button>
+    </form>
+{% endblock %}

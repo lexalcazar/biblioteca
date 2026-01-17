@@ -3,15 +3,17 @@
 
 {% block content %}
     <h2>Lista de Libros Disponibles</h2>
+<div style="border: 2px solid black;">
     <ul>
         {% for libro in libros %}
             <li>
-                <a href="{% url 'detalle_libro' libro.titulo %}">{{ libro.titulo }}</a> por {{ libro.autor }}
+                <a href="{% url 'detalle_libro' libro.titulo %}">{{ libro.titulo }}</a>
             </li>
         {% empty %}
             <li>No hay libros disponibles.</li>
         {% endfor %}
     </ul>
+</div>
     <a href="{% url 'index' %}" class="btn btn-primary">Volver a la página de inicio</a>
     
 {% endblock %}

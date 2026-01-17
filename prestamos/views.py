@@ -1,7 +1,7 @@
 from urllib import request
 from django.shortcuts import  render
 
-from prestamos.forms import  AutorForm, LibroForm, UsuarioForm
+from prestamos.forms import  AutorForm, LibroForm, PrestamoForm, UsuarioForm
 from prestamos.models import Autor, Libro, Usuario
 
 # Create your views here.
@@ -10,8 +10,9 @@ def index(request):
     return render(request, 'prestamos/index.html')
 # listado de libros disponibles
 def lista_libros(request):
+    autores = Autor.objects.all()
     libros = Libro.objects.all()
-    return render(request, 'prestamos/lista_libros.html', {'libros': libros})
+    return render(request, 'prestamos/lista_libros.html', {'libros': libros, 'autores': autores})
 # detalle de un libro
 def detalle_libro(request, libro_titulo):
     autor = Autor.objects.get(libros__titulo=libro_titulo)
@@ -57,3 +58,24 @@ def crear_autor(request):
 # vista para autor creado
 def autor_creado(request, autor):
     return render(request, 'prestamos/autor_creado.html', {'autor': autor})
+# vista de autores
+def lista_autores(request):
+    autores = Autor.objects.all()
+    return render(request, 'prestamos/lista_autores.html', {'autores': autores})
+# detalle de un autor
+def detalle_autor(request, autor_nombre):
+    autor = Autor.objects.get(nombre=autor_nombre)
+    libros = Libro.objects.filter(autor=autor)
+    return render(request, 'prestamos/detalle_autor.html', {'autor': autor, 'libros': libros})
+# vista para crear prestamos
+def crear_prestamo(request):
+    form = PrestamoForm()
+    if request.method == 'POST':
+        form = PrestamoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'prestamos/prestamo_creado.html', {'prestamo': form.instance})
+    return render(request, 'prestamos/crear_prestamo.html', {'form': form})
+# vista para prestamo creado
+def prestamo_creado(request, prestamo):
+    return render(request, 'prestamos/prestamo_creado.html', {'prestamo': prestamo})
