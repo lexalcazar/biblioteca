@@ -16,6 +16,7 @@ class Usuario(AbstractUser):
     direccion= models.CharField(max_length=200, blank=True)
     telefono= models.CharField(max_length=15, blank=True)
     rol= models.CharField(max_length=20, choices=ROLES, default='usuario')
+    
     def save(self, *args, **kwargs):
         if not self.username:
             self.username = self.email
@@ -52,7 +53,7 @@ class Prestamo(models.Model):
     devuelto = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'Préstamo de {self.libro.titulo} a {self.usuario.nombre} desde {self.fecha_prestamo} hasta {self.fecha_devolucion}'
+        return f'Préstamo de {self.libro.titulo} a {self.usuario.first_name} desde {self.fecha_prestamo} hasta {self.fecha_devolucion}'
     
 # Modelo para autores
 class Autor(models.Model):

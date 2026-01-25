@@ -1,9 +1,13 @@
 {% extends 'base_generic.html' %}
 {% block content %}
+<div class="contenedor_lista">
+    <div class="lista">
     <h2>Detalle del Libro</h2>
     <p>Título: {{ libro.titulo }}</p>
     <p>Autor: {{ autor.nombre }} {{ autor.apellidos }}</p>
     <p>Estado: {{ libro.estado }}</p>
     <p>Copias Disponibles: {{ libro.copias }}</p>
-    <a href="{% url 'lista_libros' %}" class="btn btn-secondary">Volver a la lista de libros</a>
+    </div>
+</div>
+    <a class="enlace_inicio" href="{% url 'lista_libros' %}" class="btn btn-secondary">Volver a la lista de libros</a>
 {% endblock %}

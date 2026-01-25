@@ -1,0 +1,6 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+  <h2>Libro Devuelto</h2>
+  <p>El libro "{{ prestamo.libro.titulo }}" ha sido devuelto correctamente.</p>
+  <a href="{% url 'lista_prestamos' %}" class="btn btn-secondary">Volver al listado de préstamos</a>
+{% endblock %}

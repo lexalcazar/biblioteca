@@ -1,0 +1,37 @@
+{% extends 'base_generic.html' %}
+ {% load static %}
+{% block content %}
+  <h1>Listado de Préstamos</h1>
+  <table class="listado_prestamos">
+    <thead>
+      <tr>
+        
+        <th>Usuario</th>
+        <th>Libro</th>
+        <th>Fecha de Préstamo</th>
+        <th>Fecha de Devolución</th>
+        <th>Acciones</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prestamo in prestamos %}
+        <tr>
+          <td>{{ prestamo.usuario.first_name }} {{ prestamo.usuario.last_name }}</td>
+          <td>{{ prestamo.libro }}</td>
+          <td>{{ prestamo.fecha_prestamo }}</td>
+          <td>{{ prestamo.fecha_devolucion }}</td>
+          <td><a href="{% url 'devolver_libro' prestamo.id %}">Devolver</a></td>
+            <td>
+                {% if prestamo.devuelto %}
+                Devuelto
+                {% else %}
+                Prestado
+                {% endif %}
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<a href="{% url 'index' %}">Volver al inicio</a>
+{% endblock %}

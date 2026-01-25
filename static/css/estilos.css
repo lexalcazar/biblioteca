@@ -1,26 +1,41 @@
 header {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-nav{
+        background-color: black;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
 
+nav {
+
+    }
+/*
+a p{  color: black;
+        text-decoration: none;
+        color: inherit;
+    }
+a:hover p{
+    color: red;
 }
+a:active p{
+    color:green;
+}
+*/
 footer {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    /*position: fixed;*/
-    width: 100%;
-    bottom: 0;
-}
+        background-color: black;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        /*position: fixed;*/
+        width: 100%;
+        bottom: 0;
+    }
+
 body {
     font-family: serif, sans-serif;
     margin: 0;
     padding-bottom: 40px; /* To ensure content is not hidden behind the footer */
 }
+
 main {
     
     padding: 20px;
@@ -67,6 +82,7 @@ form{
     height: auto;
     overflow: hidden;*/
 }
+
 .tarjeta{
 
     
@@ -79,4 +95,85 @@ form{
     width: auto;
     overflow: hidden;
     
+}
+.contenedor_lista{
+        display: flex;
+        justify-content: center; /* horizontal */
+}
+.lista{
+       
+        /*align-items: center;     /* vertical */
+        width: fit-content;
+        border: solid black 1px !important;
+        box-shadow: 3px 3px grey;
+        
+       
+    }
+.lista ul{
+    padding: 20px;
+}
+.lista ul li{ 
+    padding-top : 10px;
+    }
+.lista p{
+    padding: 20px;
+}
+.lista h2{
+    padding: 20px;
+}
+
+/*#test{
+    background-color: red;
+}*/
+.enlace_inicio{
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+.enlace_inicio:hover{
+   
+    color: blue;
+    text-decoration: underline;
+}
+li > a{
+    text-decoration: none;
+    color: black;
+}
+li > a:hover{
+    
+    color: blue;
+    text-decoration: underline;
+}
+.nav_links > li{
+    color:white;
+}
+.listado_prestamos{
+
+    border: solid black 1px !important;
+    box-shadow: 3px 3px grey;
+    width: fit-content;
+    padding: 20px;
+    margin: 20px auto;
+    border: collapse;
+    color: black;
+    text-align: left;
+
+}
+/* Bordes visibles en celdas */
+.listado_prestamos,
+.listado_prestamos th,
+.listado_prestamos td {
+    border: 1px solid black;
+}
+
+.listado_prestamos th,
+.listado_prestamos td {
+    padding: 20px;
+}
+
+/* Sombra solo al conjunto */
+.listado_prestamos {
+    box-shadow: 3px 3px grey;
 }

@@ -1,9 +1,12 @@
+
 {% extends 'base_generic.html' %}
+{% load static %}
 {% block title %}Lista de Libros{% endblock %}
 
 {% block content %}
-    <h2>Lista de Libros Disponibles</h2>
-<div style="border: 2px solid black;">
+    <h2 style="text-align: center;">Lista de Libros Disponibles</h2>
+<div class="contenedor_lista">
+    <div class="lista">
     <ul>
         {% for libro in libros %}
             <li>
@@ -13,7 +16,8 @@
             <li>No hay libros disponibles.</li>
         {% endfor %}
     </ul>
+    </div>
 </div>
-    <a href="{% url 'index' %}" class="btn btn-primary">Volver a la página de inicio</a>
+    <a class="enlace_inicio" href="{% url 'index' %}" class="btn btn-primary">Volver a la página de inicio</a>
     
 {% endblock %}

@@ -4,7 +4,7 @@
 {% load static %}
 {% block header %}
     <nav>
-        <ul>
+        <ul class="nav_links">
             
             <li><a href="{% url 'lista_libros' %}">Lista de Libros</a></li>
             <li><a href="{% url 'crear_usuario' %}">Crear Usuario</a></li>
@@ -13,12 +13,14 @@
             <li><a href="{% url 'crear_autor' %}">Crear Autor</a></li>
             <li><a href="{% url 'lista_autores' %}">Lista de Autores</a></li>
             <li><a href="{% url 'crear_prestamo' %}">Crear Préstamo</a></li>
+            <li><a href="{% url 'lista_prestamos' %}">Lista de Préstamos</a></li>
+            
             
         </ul>
     </nav>
 {% endblock %}
 {% block content %}
-    <h2>Bienvenido a la sección de Préstamos de la Biblioteca</h2>
+    <h2 style="text-align: center;">Bienvenido a la sección de Préstamos de la Biblioteca</h2>
     <div class="principal">
         <!--Contenedor de lista de libros-->
         <div class="contenedor">
@@ -152,6 +154,23 @@
                     
     </div>  
         <!-- Fin div crear prestamo -->
+    <!--Contenedor de lista prestamos -->
+        <div class="contenedor">
+            
+        <div class="tarjeta">
+            <a href="{% url 'lista_prestamos' %}">
+                <img src="{% static 'images/lista_prestamos.jpeg' %}" alt="Logo">
+            </a>
+        </div>
+        <div class="sub_tarjeta"> 
+            <a href="{% url 'lista_prestamos' %}">                    
+                <h1>Lista de préstamos</h1>
+                <p>Ver los préstamos realizados</p>
+            </a>
+
+        </div>
+        <!-- Fin div lista prestamos -->
+       
     </div>    
   
 {% endblock %}  

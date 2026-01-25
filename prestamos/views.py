@@ -1,8 +1,9 @@
+from time import timezone
 from urllib import request
-from django.shortcuts import  render
+from django.shortcuts import  get_object_or_404, render
 
-from prestamos.forms import  AutorForm, LibroForm, PrestamoForm, UsuarioForm
-from prestamos.models import Autor, Libro, Usuario
+from prestamos.forms import  AutorForm, DevolucionForm, LibroForm, PrestamoForm, UsuarioForm
+from prestamos.models import Autor, Libro, Prestamo, Usuario
 
 # Create your views here.
 #Pagina de inicio de la aplicacion de prestamos
@@ -79,3 +80,23 @@ def crear_prestamo(request):
 # vista para prestamo creado
 def prestamo_creado(request, prestamo):
     return render(request, 'prestamos/prestamo_creado.html', {'prestamo': prestamo})
+# listado de prestamos
+def lista_prestamos(request):
+    prestamos = Prestamo.objects.all()
+    return render(request, 'prestamos/lista_prestamos.html', {'prestamos': prestamos})
+#vista formulario devolver libro 
+def devolver_libro(request, prestamo_id):
+    prestamo = get_object_or_404(Prestamo, id=prestamo_id)
+
+    if request.method == "POST":
+        form = DevolucionForm(request.POST, instance=prestamo)
+        if form.is_valid():
+            prestamo = form.save()
+            return render(request, "prestamos/libro_devuelto.html", {"prestamo": prestamo})
+    else:
+        form = DevolucionForm(instance=prestamo)
+
+    return render(request, "prestamos/devolver_libro.html", {"form": form, "prestamo": prestamo})
+# vista para libro devuelto
+def libro_devuelto(request, prestamo):
+    return render(request, 'prestamos/libro_devuelto.html', {'prestamo': prestamo})

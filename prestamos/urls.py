@@ -18,5 +18,8 @@ urlpatterns = [
     path('autores/<str:autor_nombre>/', views.detalle_autor, name='detalle_autor'),
     path('crear_prestamo/', views.crear_prestamo, name='crear_prestamo'),
     path('prestamo_creado/', views.prestamo_creado, name='prestamo_creado'),
+    path('prestamos/', views.lista_prestamos, name='lista_prestamos'),
+    path("devolver/<uuid:prestamo_id>/", views.devolver_libro, name="devolver_libro"),
+    path('libro_devuelto/', views.libro_devuelto, name='libro_devuelto'),
 
 ]

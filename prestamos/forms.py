@@ -1,6 +1,7 @@
 # Formularios
 
 # Formulario para crear usuario
+from django.utils import timezone
 from django import forms
 from .models import Usuario, Libro, Prestamo, Autor
 
@@ -83,7 +84,40 @@ class PrestamoForm(forms.ModelForm):
         except Usuario.DoesNotExist:
             raise forms.ValidationError('No existe un usuario con ese DNI.')
         return dni
-     # actualizar en la tabla libro la cantidad de libros disponibles
+     # Comprobar que hay copias disponibles del libro
+    def clean_libro(self):
+        libro = self.cleaned_data.get('libro')
+        # si no hay copias disponibles, lanzar error y cambiar estado del libro a 'no disponible'
+        if libro.copias <= 0:
+            libro.estado = 'no disponible'
+            libro.save()
+            raise forms.ValidationError('No hay copias disponibles de este libro.')
+        return libro
+    # Al guardar el prestamo, restar una copia del libro
+    def save(self, commit=True):
+        prestamo = super().save(commit=False)
+        libro = prestamo.libro
+        libro.copias -= 1
+        if commit:
+            libro.save()
+            prestamo.save()
+        return prestamo
     
 
-    
+# Formulario devolucion de prestamos, y cambniarestdao del prestamo a devuelto y actualizar las copias dispononibles del libro
+class DevolucionForm(forms.ModelForm):
+    prestamo = forms.ModelChoiceField(queryset=Prestamo.objects.filter(devuelto=False), widget=forms.Select(attrs={'class': 'form-control'}))
+    class Meta:
+        model = Prestamo
+        fields = ['prestamo']
+    # Al guardar la devolucion, actualizar el prestamo y el libro
+    def save(self, commit=True):
+        prestamo = super().save(commit=False)
+        libro = prestamo.libro
+        libro.copias += 1
+        prestamo.devuelto = True
+        prestamo.fecha_devolucion = timezone.now().date()
+        if commit:
+            libro.save()
+            prestamo.save()
+        return prestamo
