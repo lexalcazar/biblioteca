@@ -47,9 +47,11 @@ class ListaLibrosApiTests(TestCase):
         self.assertEqual(respuesta.json(), [])
 
     def test_rechaza_metodos_distintos_de_get(self):
-        respuesta = self.client.post('/api/libros/')
+        for method in ('post', 'put', 'patch', 'delete', 'head', 'options'):
+            with self.subTest(method=method):
+                respuesta = getattr(self.client, method)('/api/libros/')
 
-        self.assertEqual(respuesta.status_code, 405)
+                self.assertEqual(respuesta.status_code, 405)
 
     def test_ruta_web_de_libros_sigue_disponible(self):
         respuesta = self.client.get('/prestamos/libros/')

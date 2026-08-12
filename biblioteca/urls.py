@@ -16,11 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from prestamos import views as prestamos_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/libros/', prestamos_views.lista_libros_api, name='lista_libros_api'),
+    path('api/', include('prestamos.api.urls')),
     # Include las urls de la aplicacion prestamos
     path('prestamos/', include('prestamos.urls')),
     
