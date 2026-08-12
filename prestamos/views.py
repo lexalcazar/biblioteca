@@ -1,9 +1,37 @@
 from time import timezone
 from urllib import request
 from django.shortcuts import  get_object_or_404, render
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET
 
 from prestamos.forms import  AutorForm, DevolucionForm, LibroForm, PrestamoForm, UsuarioForm
 from prestamos.models import Autor, Libro, Prestamo, Usuario
+
+
+@require_GET
+def lista_libros_api(request):
+    libros = Libro.objects.prefetch_related('autor')
+    datos = [
+        {
+            'id': str(libro.id),
+            'titulo': libro.titulo,
+            'editorial': libro.editorial,
+            'isbn': libro.isbn,
+            'copias': libro.copias,
+            'estado': libro.estado,
+            'autores': [
+                {
+                    'id': str(autor.id),
+                    'nombre': autor.nombre,
+                    'apellidos': autor.apellidos,
+                }
+                for autor in libro.autor.all()
+            ],
+        }
+        for libro in libros
+    ]
+    return JsonResponse(datos, safe=False)
+
 
 # Create your views here.
 #Pagina de inicio de la aplicacion de prestamos
